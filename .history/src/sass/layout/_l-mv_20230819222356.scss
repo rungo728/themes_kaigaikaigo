@@ -1,0 +1,50 @@
+@use "global" as *;
+#visArea_nihongo{
+    background-color: #fff;
+    
+    .mainArea__inner{
+        max-width: 860px;
+        margin: 0 auto;
+    }
+}
+#visArea_nihongo .mainArea{
+    background: url(img/mv.png) center top no-repeat;
+    background-size: contain;
+    min-height: 484px;
+    position: relative;
+}
+#visArea_nihongo .mainArea::before{
+    position: absolute;
+    content: "";
+    background: url(img/);
+}
+#visArea_nihongo .subTitArea{
+    display: block;
+}
+#visArea_nihongo .mainArea__subtit{
+    text-align: center;
+    margin: 0 auto rem(50);
+    max-width: 366px;
+    padding: rem(10);
+    background: #EE8204;
+    color: #fff;
+    border-radius: 43px;
+    position: relative;
+}
+#visArea_nihongo .mainArea__subtit:after{
+    position: absolute;
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #EE8204;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#visArea_nihongo .mainTxtBox{
+    text-align: center;
+    margin: 0 auto rem(40);
+
+}

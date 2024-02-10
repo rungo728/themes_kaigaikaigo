@@ -1,0 +1,29 @@
+@use "global" as *;
+
+.sec .sec__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.titArea .tit {
+  display: inline-block;
+  position: relative;
+  max-width: ;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 2.5rem;
+  background: #334d95;
+  background-size: 7px 11px;
+  box-shadow: 1px 1px 0 #5c5c5c;
+  border-radius: 5rem;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+}
+.titArea .tit .small{
+    font-size: rem(26);
+}

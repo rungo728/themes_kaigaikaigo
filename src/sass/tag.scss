@@ -1,0 +1,291 @@
+@use "sass:math";
+// pxからremへの計算式
+// 例：rem(32) → 2rem
+@function rem($pixels) {
+  @return math.div($pixels, 16) * 1rem;
+}
+
+// 数値のみを取り出す
+// 例：strip-unit(16px) → 16
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+  @return $number;
+}
+
+// フォントサイズ ÷ 画面幅 * 100vw の計算
+// 例：vw(1250px, 16px) → 16px ÷ 1250px × 100vw
+@function vw($window_width, $size) {
+  @return math.div($size, $window_width) * 100vw;
+}
+
+// インナー幅
+$innerWidth: 1024px;
+// 余白
+$padding-pc: 25px;
+$padding-sp: 20px;
+// フォント
+$font-main: "";
+// 色指定
+$black: #483c34;
+$white: #fff;
+// ブレイクポイント
+$breakpoints: (
+  sm: 480,
+  md: 767,
+  lg: 1024,
+  xl: 1440,
+);
+// メディアクエリ
+$mediaquerys: (
+  sm: "screen and (max-width: #{map-get($breakpoints,'sm')}px)",
+  md: "screen and (max-width: #{map-get($breakpoints,'md')}px)",
+  lg: "screen and (max-width: #{map-get($breakpoints,'lg')}px)",
+  xl: "screen and (max-width: #{map-get($breakpoints,'xl')}px)",
+);
+// メディアクエリを "@include mq(){}" で書くことができる
+@mixin mq($mediaquery: md) {
+  @media #{map-get($mediaquerys, $mediaquery)} {
+    @content;
+  }
+}
+
+// 基本設定
+body {
+  color: $black;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+p {
+  line-height: calc(32 / 16);
+}
+
+.visArea_lower {
+  &.tag {
+    background: #f6f9e3;
+    @include mq(sm) {
+      background: #f6f9e3;
+      height: 110px;
+    }
+    .logo-img {
+      max-width: 520px;
+      margin: 0 10px 0 0;
+    }
+    .mainArea {
+      min-height: 140px;
+      padding: 90px 0 40px;
+      @include mq(sm) {
+        min-height: 110px;
+        padding: 0;
+        display: grid;
+        place-content: center;
+      }
+      h1 {
+        font-size: 36px;
+        @include mq(sm) {
+          font-size: 18px;
+          margin: 0;
+        }
+      }
+      .sitename {
+        line-height: 1.2;
+        @include mq(sm) {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+a:has(.visArea_lower) {
+  pointer-events: none;
+  color: #483c34;
+}
+
+.contents {
+  max-width: 1000px;
+  margin: 0 auto 100px;
+  display: flex;
+  @include mq(sm) {
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  .main {
+    max-width: 700px;
+    width: 100%;
+    margin: 50px 50px 0 0;
+    @include mq(sm) {
+      max-width: 100%;
+      margin: 20px 0 0;
+      padding: 0 15px;
+    }
+    .tagBox {
+      display: flex;
+      justify-content: space-between;
+      min-height: 200px;
+      margin-top: 30px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #d4d4d4;
+      &:first-child {
+        margin-top: 0;
+      }
+      @include mq(sm) {
+        flex-wrap: wrap;
+        height: auto;
+        padding-bottom: 20px;
+      }
+      .imgBox {
+        @include mq(sm) {
+          text-align: center;
+          margin: 0 auto;
+        }
+        img {
+          max-width: 220px;
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 14px;
+          @include mq(sm) {
+            max-width: 100%;
+            height: auto;
+          }
+        }
+      }
+      a:has(.imgBox) {
+        pointer-events: none;
+      }
+      .textsBox {
+        max-width: 450px;
+        width: 100%;
+        @include mq(sm) {
+          max-width: 100%;
+          margin-top: 10px;
+        }
+        .boxTit {
+          line-height: calc(27 / 20);
+          position: relative;
+          margin: 4px auto 0;
+          a {
+            color: $black;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.3;
+            display: block;
+            padding-right: 35px;
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            background: url(../img/arrow-or.png) no-repeat center center;
+            background-size: contain;
+            transform: translateY(-50%);
+          }
+        }
+        .excerpt {
+          p {
+            margin-top: 18px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            @include mq(sm) {
+              margin-top: 10px;
+              margin-bottom: 20px;
+              line-height: calc(43 / 32);
+            }
+          }
+        }
+      }
+      .tagsBox {
+        display: flex;
+        justify-content: space-between;
+        @include mq(sm) {
+          flex-wrap: wrap;
+        }
+        .tags {
+          @include mq(sm) {
+            width: 100%;
+          }
+          .tag {
+            font-size: 14px;
+            color: #fff;
+            background: #b4b4b4;
+            border-radius: 5px;
+            padding: 3px 10px;
+            margin: 0 10px 10px 0;
+            display: inline-block;
+            @include mq(sm) {
+              font-size: 18px;
+              padding: 2px 5px;
+            }
+          }
+        }
+        .date {
+          font-size: 16px;
+          color: #b4b4b4;
+          @include mq(sm) {
+            width: 100%;
+            margin-top: 8px;
+            text-align: right;
+          }
+        }
+      }
+    }
+    .pagination {
+      margin: 82px auto 105px;
+    }
+  }
+}
+
+.date-tag-wrap {
+  width: 100%;
+  margin: 35px auto 0;
+  @include mq(sm) {
+    width: 100%;
+  }
+  .date-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: #f6f6f6;
+    text-align: center;
+    padding: 8px 40px;
+  }
+  .date-tags {
+    padding: 20px 0 35px;
+    display: flex;
+    @include mq(sm) {
+      padding: 10px 0 20px;
+    }
+  }
+  .tags-inline {
+    margin: 0;
+    padding: 0;
+    .tags-inline-list {
+      display: inline-block;
+      text-align: center;
+      position: relative;
+      align-items: center;
+      box-sizing: border-box;
+      font-size: 14px;
+      color: #fff;
+      border-radius: 5px;
+      @include mq(sm) {
+        padding: 2px 8px;
+        font-size: 18px;
+      }
+      a {
+        color: #fff;
+        background: #b4b4b4;
+        margin: 0 10px 10px 0;
+        padding: 2px 8px;
+        display: inline-block;
+        border-radius: 5px;
+      }
+    }
+  }
+}

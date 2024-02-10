@@ -1,0 +1,49 @@
+@use "global" as *;
+
+.btn-internal{
+	a{
+		display: block;
+    position: relative;
+    width: 460px;
+    margin: 0 auto;
+    padding: 1.5rem 2.5rem;
+    background: #ADCC08 url(img/arrow_white.png) no-repeat right 1.5rem center;
+    background-size: 36px 36px;
+    border: 3px solid #fff;
+    box-shadow: 1px 1px 0 #5c5c5c;
+    border-radius: 5rem;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: rem(18);
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+	}
+}
+.mainArea .btnArea{
+	display: flex;
+	flex-wrap: wrap;
+
+}
+.mainArea .btnArea .btn-internal{
+	max-width: 260px;
+	width: calc(100%/3 - 1rem);
+	margin: 0 2rem 0 0;
+}
+.mainArea .btnArea .btn-internal:nth-child(3n){
+	max-width: 260px;
+	width: calc(100%/3 - 1rem);
+	margin: 0 0 0 0;
+}
+.mainArea .btnArea .btn-internal a{
+	display: grid;
+	place-content: center;
+	width: 100%;
+	color: #483C34;
+	background: #fff url(img/arrow_green.png) no-repeat right 1.5rem center;
+	border: 6px solid #ABCD03;
+	padding: rem(10) rem(40) rem(15);
+	font-size: rem(20);
+	min-height: 83px;
+}

@@ -1,0 +1,160 @@
+@use "global" as *;
+
+// インナー幅＋余白
+$breakpointInner: $innerWidth + strip-unit($padding-pc) * 2;
+
+// ルートフォント設定
+html {
+  // インナー幅＋余白+1px ~
+  font-size: 100%;
+
+  // 768px ~ インナー幅＋余白
+  @media ( max-width: $breakpointInner ) {
+    font-size: vw(strip-unit($breakpointInner), 16);
+  }
+
+  // 376px ~ 767px
+  @include mq(md) {
+    font-size: 100%;
+  }
+
+  // ~ 375px
+  @media (max-width: 375px) {
+    font-size: vw(375, 16);
+  }
+}
+
+// フォント、カラー設定
+body {
+  font-family: $font-main;
+  color: $black;
+  margin: 0;
+}
+
+// ホバー
+a,
+button {
+  @include mq(md) {
+    transition: .3s;
+    &:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+  }
+}
+
+//  pcとspの設定
+.sp,
+.sp_br {
+    display: none!important;
+}
+
+@media screen and (max-width: 480px) {
+    .pc,
+    .pc_br {
+        display: none!important;
+    }
+    .sp,
+    .sp_br {
+        display: block!important;
+    }
+}
+p {
+  line-height: calc(29 / 16);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+.visually-hidden{
+display: none;
+}
+.logo-img {
+  max-width: 700px;
+  height: auto;
+  vertical-align: baseline;
+  margin: 0 rem(10) 0 0;
+  @include mq(sm){
+    max-width: 280px;
+  }
+}
+span:not(class){
+  color: #EE8204;
+}
+span.small{
+  font-size: rem(26);
+}
+
+.contents .frame-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+  margin: 60px auto;
+}
+.contents .frame-wrap .frame.type-a{
+  background: #fff;
+  box-shadow: 0px 22px 26px rgba(0,0,0,0.05);
+  border-radius: 30px;
+  counter-increment: number;
+  position: relative;
+}
+.contents .frame-wrap .frame.type-a::after{
+  content: counter(number, decimal-leading-zero); /* ⇐「decimal-leading-zero」を追加・「”0”」を削除 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: rem(24);
+  font-weight: bold;
+  line-height: 1;
+  position: absolute;
+  background: #334D95;
+  background-size: 45px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  top: 38%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.contents .frame-wrap  .frame-body{
+  margin: rem(40) auto 0;
+  text-align: center;
+}
+.contents .col4{
+  width: calc(100%/4 - rem(16));
+  margin: 0 rem(16) 0 0;
+}
+.contents .col4:nth-child(4n){
+  margin: 0;
+}
+.contents .col3{
+  width: calc(100%/3 - 14px);
+  margin: 0 20px 0 0;
+}
+.contents .col3:nth-child(3n){
+  margin: 0;
+}
+.contents .col2 {
+  width: calc(100% / 2 - 14px);
+  margin: 0 20px 0 0;
+}
+
+.contents .col2:nth-child(2n) {
+  margin: 0;
+}
+
+.contents .sec03 .block .box.col2:nth-child(2n) {
+  margin: 0 0 70px 0
+  
+  
+#pankuzu {
+  padding: 8px 0;
+  background: #f6f6f6;
+}
+
+#pankuzu span {
+  color: #989898;
+}

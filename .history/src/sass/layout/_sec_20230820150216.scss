@@ -1,0 +1,54 @@
+@use "global" as *;
+
+.sec {
+  counter-increment: number;
+  position: relative;
+}
+.sec01 {
+	margin: 120px auto 0;
+	background: #;
+}
+.sec:before {
+  content: counter(number, decimal-leading-zero); /* ⇐「decimal-leading-zero」を追加・「”0”」を削除 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ee8204;
+  font-size: rem(85);
+  font-weight: bold;
+  line-height: 1;
+  position: absolute;
+  background-size: 45px;
+  border-radius: 50%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.sec .sec__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.titArea .tit {
+  display: inline-block;
+  position: relative;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 2.5rem;
+  background: #334d95;
+  background-size: 7px 11px;
+  box-shadow: 1px 1px 0 #5c5c5c;
+  border-radius: 5rem;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+}
+.titArea .tit .small {
+  font-size: rem(26);
+  color: #fff;
+}

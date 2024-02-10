@@ -1,0 +1,45 @@
+<dl>
+  <dt><span class="required">必須</span>氏名</dt>
+  <dd class="name">
+    <div class="name-last">
+      <label> [text* your-Lname placeholder "性"] </label>
+    </div>
+    <div class="name-first">
+      <label> [text* your-Fname placeholder "名"] </label>
+    </div>
+  </dd>
+</dl>
+<dl>
+  <dt><span class="required">必須</span>会社・施設名</dt>
+  <dd><label> [text* your-Companyname placeholder "〇〇株式会社"] </label></dd>
+</dl>
+<dl>
+  <dt><span class="any">任意</span>部署名</dt>
+  <dd><label> [text your-Companydivision placeholder "〇〇部"] </label></dd>
+</dl>
+<dl>
+  <dt><span class="any">任意</span>役職名</dt>
+  <dd><label> [text your-Companypost placeholder "部長"] </label></dd>
+</dl>
+<dl>
+  <dt><span class="required">必須</span>メールアドレス</dt>
+  <dd><label> [email* your-email placeholder "example@mail.com"] </label></dd>
+</dl>
+<dl>
+  <dt><span class="required">必須</span>電話番号</dt>
+  <dd><label> [tel* tel-number placeholder "03-0000-0000"] </label></dd>
+</dl>
+<dl>
+  <dt><span class="any">任意</span>ご要望や<br />質問等</dt>
+  <dd><label> [textarea textarea-your-message placeholder "ご要望や質問等をご入力ください"] </label></dd>
+</dl>
+<dl>
+  <dt><span class="required">必須</span>個人情報提供の<br />同意確認</dt>
+  <dd>
+    <p>全研本社株式会社（以下「当社」）が取得 した個人情報は以下の目的以外には一切使用しません。<br />・当社の提供するサービスに関連する資料の送付 <br />・当社のサービスに関するお知らせやセミナーのご案内 <br />・当社の新サービスのご案内<br />また、 上記で明示した利用目的以外の利用が発生する場合には、 その都度、改めて同意を取得します。</p>
+    <p>上記当社の利用目的ならびに個⼈情報保護ポリシーと個⼈情報のお取り扱いについて 同意される⽅のみ送信できます。</p>
+    <p>なお、個人情報の当社への提供は、ご自身の判断にてお願いしていますが、当社の業務上、 必要な情報をいただけない場合には、当社から十分なサービスをご提供できない場合があります。</p>
+    <div class="accept"><label> [acceptance acceptance-personal]個人情報の提供に同意する[/acceptance] </label></div>
+  </dd>
+</dl>
+<div class="btn-internal submit">[submit "確認画面に進む"][multistep multistep-839 first_step "/form/shiryo/confirm"]</div>

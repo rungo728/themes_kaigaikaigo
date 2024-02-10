@@ -1,0 +1,215 @@
+@use "global" as *;
+// slider
+.sec07 {
+    position: relative;
+    z-index: 0;
+    padding: 0 0 110px;
+    @media screen and (max-width: 480px) {
+      padding: 0 0 25px;
+    }
+  }
+  
+  .sec07::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 333px;
+    background: #ee8204;
+    z-index: -1;
+    bottom: 0;
+    @media screen and (max-width: 480px) {
+      height: 174px;
+      bottom: 0;
+    }
+  }
+  
+  .sec07_block {
+    background: #fcf4e7;
+    border-radius: 30px;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 50px 0 80px;
+    @media screen and (max-width: 480px) {
+      margin: 0 15px;
+      padding: 34px 0 30px;
+    }
+  }
+  
+  .sec07_block .sec__inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .sec07_block .headArea .ttl {
+    max-width: 740px;
+    margin: 0 auto 40px;
+    font-size: 36px;
+    text-align: center;
+    color: #483c34;
+    background: url(../img/line_ico.png) no-repeat bottom;
+    padding: 0 0 30px;
+    @media screen and (max-width: 480px) {
+      font-size: 18px;
+      background-size: 23px auto;
+      margin: 0 auto 24px;
+      padding: 0 0 22px;
+    }
+  }
+  
+  .sec07_block .headArea .ttl span.small {
+    display: block;
+    margin: 0 0 rem(10) 0;
+    @media screen and (max-width: 480px) {
+      font-size: 18px;
+    }
+  }
+  
+  .sec07_block .headArea .ttl img {
+    @media screen and (max-width: 480px) {
+      max-width: 280px;
+    }
+  }
+  
+  .sec07_block .item {
+    background: #fff;
+    margin: 0 12.5px 0;
+    box-sizing: border-box;
+    border: 1px solid #707070;
+    border-radius: 20px;
+  }
+  
+  .sec07_block .item a {
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .sec07_block .item a::after {
+    background: url(../img/arrow_or.png) no-repeat;
+    background-size: 36px;
+    width: 36px;
+    height: 36px;
+    content: "";
+    right: 5%;
+    bottom: 5%;
+    position: absolute;
+  }
+  
+  .sec07_block .item .item_box {
+    padding: 16px;
+  }
+  
+  .sec07_block .item .item_box .tag {
+    background: #adcd2f;
+    padding: 6px;
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+    display: inline-block;
+    margin: 10px auto 0;
+  }
+  
+  .sec07_block .item .item_box .tag.or {
+    background: #ee8204;
+  }
+  
+  .sec07_block .item .item_box .catch {
+    font-size: 18px;
+    font-weight: bold;
+    color: #483c34;
+    margin: 10px auto;
+    @media screen and (max-width: 480px) {
+      line-height: calc(24 / 18);
+    }
+  }
+  
+  .sec07_block .item .item_box .companyName {
+    font-size: 12px;
+    color: #493d35;
+  }
+  
+  /*--------------------------------------
+  　slick
+  ---------------------------------------*/
+  
+  button {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .slick-slide:focus {
+    outline: none;
+  }
+  
+  .slick-slide {
+    display: none;
+  }
+  
+  .slick-initialized .slick-slide {
+    display: block;
+  }
+  
+  .slide-arrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 47px;
+    height: 47px;
+    z-index: 999;
+    cursor: pointer;
+    @media screen and (max-width: 480px) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  
+  button {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .slick-slide:focus {
+    outline: none;
+  }
+  
+  .slick-slide {
+    display: none;
+  }
+  
+  .slick-initialized .slick-slide {
+    display: block;
+  }
+  
+  .prev-arrow {
+    left: -60px;
+    background: url(../img/arrow_prev.png) left top no-repeat;
+    background-size: 100% auto;
+    @media screen and (max-width: 480px) {
+      left: 0;
+    }
+  }
+  
+  .next-arrow {
+    right: -60px;
+    background: url(../img/arrow_next.png) left top no-repeat;
+    background-size: 100% auto;
+    @media screen and (max-width: 480px) {
+      right: 0;
+    }
+  }
+  

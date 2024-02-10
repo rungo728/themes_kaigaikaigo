@@ -1,0 +1,393 @@
+@use "sass:math";
+// pxからremへの計算式
+// 例：rem(32) → 2rem
+@function rem($pixels) {
+  @return math.div($pixels, 16) * 1rem;
+}
+
+// 数値のみを取り出す
+// 例：strip-unit(16px) → 16
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+  @return $number;
+}
+
+// フォントサイズ ÷ 画面幅 * 100vw の計算
+// 例：vw(1250px, 16px) → 16px ÷ 1250px × 100vw
+@function vw($window_width, $size) {
+  @return math.div($size, $window_width) * 100vw;
+}
+
+// インナー幅
+$innerWidth: 1024px;
+// 余白
+$padding-pc: 25px;
+$padding-sp: 20px;
+// フォント
+$font-main: "";
+// 色指定
+$black: #483c34;
+$white: #fff;
+// ブレイクポイント
+$breakpoints: (
+  sm: 480,
+  md: 767,
+  lg: 1024,
+  xl: 1440,
+);
+// メディアクエリ
+$mediaquerys: (
+  sm: "screen and (max-width: #{map-get($breakpoints,'sm')}px)",
+  md: "screen and (max-width: #{map-get($breakpoints,'md')}px)",
+  lg: "screen and (max-width: #{map-get($breakpoints,'lg')}px)",
+  xl: "screen and (max-width: #{map-get($breakpoints,'xl')}px)",
+);
+// メディアクエリを "@include mq(){}" で書くことができる
+@mixin mq($mediaquery: md) {
+  @media #{map-get($mediaquerys, $mediaquery)} {
+    @content;
+  }
+}
+
+#side {
+  float: right;
+  max-width: 250px;
+  margin-top: 75px;
+  width: 100%;
+  @include mq(sm) {
+    max-width: 100%;
+    margin-top: 50px;
+  }
+  .sidebar-sns {
+    background: #f6f9e3;
+    border-radius: 20px;
+    padding: 15px;
+    @include mq(sm) {
+      margin: auto 15px;
+    }
+    .sidebar-sns-head {
+      font-size: 15px;
+      color: #483c34;
+      font-weight: bold;
+      text-align: center;
+      margin: 0 auto 20px;
+      @include mq(sm) {
+        font-size: 17px;
+        margin: 0 auto 4px;
+      }
+    }
+    .sidebar-sns-buttons {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px auto 0;
+        padding: 0;
+        @include mq(sm) {
+          margin: 4px auto 10px;
+        }
+        li {
+          padding: 0;
+          margin: 0 14px 0 0;
+          background: #fff;
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          display: grid;
+          place-content: center;
+          @include mq(sm) {
+            max-width: 76px;
+            height: 80px;
+            background: #fff;
+            border-radius: 10px;
+            font-size: 12px;
+            text-align: center;
+            width: calc(100% / 4 - 12px);
+            margin: 0 6px 0 0;
+            padding: 4px;
+          }
+          &:nth-child(3) {
+            margin: 0;
+            @include mq(sm) {
+              margin: 0 6px 0 0;
+            }
+          }
+          &:nth-child(4) {
+            width: 100%;
+            padding: 0;
+            background: #fff;
+            text-align: center;
+            border-radius: 40px;
+            margin: 10px 0 0;
+            font-weight: bold;
+            @include mq(sm) {
+              width: calc(100% / 4 - 16px);
+              margin: 0;
+              padding: 4px;
+              border-radius: 10px;
+            }
+            a {
+              display: flex;
+              flex-direction: row-reverse;
+              align-items: baseline;
+              @include mq(sm) {
+                font-size: 12px;
+                line-height: 1.2;
+                margin: 6px auto;
+                display: block;
+              }
+              p {
+                margin: 0 0 0 15px;
+                height: auto;
+                @include mq(sm) {
+                  font-size: 12px;
+                  margin: 0;
+                  height: 50px;
+                }
+              }
+            }
+            button {
+              display: flex;
+              flex-direction: row-reverse;
+              align-items: baseline;
+              @include mq(sm) {
+                font-size: 12px;
+                line-height: 1.2;
+                margin: 6px auto;
+                display: block;
+              }
+              p {
+                margin: 0 0 0 15px;
+                height: auto;
+                @include mq(sm) {
+                  font-size: 12px;
+                  margin: 0;
+                  height: 50px;
+                }
+              }
+            }
+            img {
+              width: 24px;
+              height: 12px;
+              @include mq(sm) {
+                text-align: center;
+              }
+            }
+          }
+          &::before {
+            content: none;
+          }
+          a {
+            color: #483c34;
+            display: grid;
+            @include mq(sm) {
+              display: block;
+            }
+            p {
+              line-height: 1.2;
+              margin: 0 auto;
+              height: 30px;
+              font-weight: bold;
+              font-size: 17px;
+              @include mq(sm) {
+                font-size: 12px;
+              }
+            }
+            span {
+              font-size: 10px;
+              border: none;
+              @include mq(sm) {
+                width: 66px;
+              }
+            }
+            .name {
+              display: none;
+              @include mq(sm) {
+                height: 35px;
+                display: grid;
+                place-content: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .date-tag-wrap {
+    .date-title {
+      margin: 30px auto 0;
+      font-size: 14px;
+      @include mq(sm) {
+        font-size: 22px;
+        margin: 30px auto 5px;
+      }
+    }
+  }
+}
+
+.l-recent {
+  margin: 0 auto 40px;
+  @include mq(sm) {
+    background: #f6f9e3;
+    padding: 18px 0;
+    margin: 0 auto;
+  }
+  &__wrapper {
+    @include mq(sm) {
+      background: #fff;
+      border-radius: 30px;
+      padding: 12px 23px 20px;
+    }
+  }
+  .recent__title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: #f6f6f6;
+    text-align: center;
+    padding: 8px 40px;
+    @include mq(sm) {
+      background: none;
+      font-size: 22px;
+      margin: 0 auto 10px;
+    }
+  }
+  .recent__items {
+    .recent__item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 0 5px;
+      @include mq(sm) {
+        margin: 0 0 20px;
+      }
+      .recent__item-img {
+        margin: 0 10px 0 0;
+        max-width: 109px;
+        height: auto;
+        img {
+          border-radius: 20px;
+          @include mq(sm) {
+            border-radius: 10px;
+          }
+        }
+      }
+      .recent__item-body {
+        @include mq(sm) {
+          flex: 0 0 58%;
+        }
+      }
+      .recent__item-title {
+        max-width: 125px;
+        font-size: 14px;
+        color: #483c34;
+        @include mq(sm) {
+          width: 100%;
+          max-width: 100%;
+          margin: 0;
+          font-size: 18px;
+          line-height: calc(42 / 36);
+        }
+      }
+    }
+  }
+}
+
+.l-popular {
+  @include mq(sm) {
+    background: #d5d5d5;
+    padding: 18px 0;
+  }
+  &__wrapper {
+    @include mq(sm) {
+      background: #fff;
+      border-radius: 30px;
+      padding: 20px 23px;
+      @include mq(sm) {
+        padding: 10px 23px 20px;
+      }
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .popular__title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: #f6f6f6;
+    text-align: center;
+    padding: 8px 40px;
+    @include mq(sm) {
+      background: none;
+      font-size: 22px;
+      padding: 8px 20px;
+      margin: 0 auto 15px;
+    }
+  }
+  .popular__items {
+    .popular__item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 0 18px;
+      position: relative;
+      counter-increment: number;
+      @include mq(sm) {
+        margin: 0 auto 20px;
+      }
+      .popular__item-body {
+        max-width: 125px;
+        width: 100%;
+        @include mq(sm) {
+          max-width: 100%;
+          flex: 0 0 58%;
+          margin: 0;
+          font-size: 18px;
+        }
+      }
+      .popular__item-title {
+        font-size: 14px;
+        margin: 0 0 0 0;
+        color: #483c34;
+        @include mq(sm) {
+          font-size: 18px;
+        }
+        a {
+          color: #483c34;
+        }
+      }
+      .popular__item-img {
+        position: relative;
+        &:before {
+          position: absolute;
+          content: "";
+          display: grid;
+          place-content: center;
+          left: -5px;
+          top: -5px;
+          width: 30px;
+          height: 30px;
+          font-size: 18px;
+          color: #fff;
+          font-weight: bold;
+          background: #adcc08;
+          border-radius: 50%;
+          content: counter(number);
+          @include mq(sm) {
+            left: -10px;
+            top: -10px;
+          }
+        }
+        img {
+          border-radius: 20px;
+          @include mq(sm) {
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+  }
+}
